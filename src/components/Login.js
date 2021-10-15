@@ -1,15 +1,80 @@
-import React from 'react';
+// import React from 'react';
+// import styled from 'styled-components';
+
+// const Login = () => {
+    
+//     return(<ComponentContainer>
+//         <ModalContainer>
+//             <h1>Welcome to Blogger Pro</h1>
+//             <h2>Please enter your account information.</h2>
+//         </ModalContainer>
+//     </ComponentContainer>);
+// }
+
+// export default Login;
+
+import React, {useState} from 'react';
+import axios from "axios";
+import { useHistory } from 'react-router';
 import styled from 'styled-components';
 
+const initialValues = { username: '', password: ''};
+
 const Login = () => {
-    
-    return(<ComponentContainer>
-        <ModalContainer>
-            <h1>Welcome to Blogger Pro</h1>
-            <h2>Please enter your account information.</h2>
-        </ModalContainer>
-    </ComponentContainer>);
-}
+    const { push } = useHistory();
+    const [formValues, setFormValues] = useState(initialValues);
+    const [error, setError] = useState("");
+
+    const handleChanges = (e) => {
+        setError("");
+        setFormValues({ ...formValues, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit= (e) => {
+    e.preventDefault();
+    if (formValues.username !== "Lambda" || formValues.password !== "School") {
+      setError("Username or Password not valid");
+    }
+    axios
+        .post("http://localhost:5000/api/login", formValues)
+        .then((res) => {
+          window.localStorage.setItem("token", res.data.payload);
+          push("/view");
+
+
+        })
+        
+        .catch((err) => console.log(err.message));
+    }
+
+    return (
+        <form onSubmit={handleSubmit}>
+        <label htmlFor="username">Username</label>
+        <input 
+            id="username" 
+            name="username"
+            value={formValues.username} 
+            onChange={handleChanges}
+            placeholder="Username"
+
+        />
+        <label htmlFor="password">Password</label>
+        <input 
+            id="password" 
+            name="password"
+            type="password"
+            placeholder="Password"
+            value={formValues.password}
+            onChange={handleChanges}
+        />
+
+        <button type="submit" id="submit">Submit</button>
+
+        <p id="error" className="error">{error}</p>
+        
+        </form>
+    );
+};
 
 export default Login;
 
