@@ -10,19 +10,26 @@ const View = (props) => {
     const [editing, setEditing] = useState(false);
     const [editId, setEditId] = useState();
 
-    // const handleDelete = (id) => {
-    // }
-    const handleDelete = (articleToDelete) => {
-        const id = articleToDelete.id
+    const handleDelete = (id) => {
         axiosWithAuth()
-            .delete(`http://localhost:5000/api/articles/${id}`)
+            .delete(`/articles/${id}`)
             .then((res) => {
-                articleService(setEditId);
+                setArticles(res.data);
             })
             .catch((err) => console.log({ err }));
     }
 
     const handleEdit = (article) => {
+        axiosWithAuth()
+            .put(`/articles/${article.id}`, article)
+            .then(res => {
+                setArticles(res.data)
+                setEditing(false)
+            })
+            .catch(err => {
+                console.log(err)
+        })
+
     }
 
     const handleEditSelect = (id)=> {
@@ -34,10 +41,45 @@ const View = (props) => {
         setEditing(false);
     }
 
+    // useEffect(() => {
+    //     axiosWithAuth()
+    //     .get("/articles")
+    //     .then((res) => {
+    //         setArticles(res.data);
+    //     })
+    //     .catch((err) => console.log({ err }));
+    // })
+
+    // useEffect(async () => {
+    //     const articles = await articleService();
+        
+    //     setArticles(articles);
+    //     console.log("result------------",res.data);
+    // }, []);
+
+    // useEffect(async () => {
+    //     await articleService(setArticles);
+        
+    //     // console.log("result------------",res.data);
+    // }, []);
+
+    // useEffect(async () => {
+    //   articleService(setArticles);
+    // }, [])
+
     useEffect(() => {
-        articleService(setArticles);
-        console.log("articles---",setArticles);
-    }, [setArticles])
+        const articles = async () => {
+           const res =  await articleService();
+            setArticles(res.data);
+        }; 
+        articles();
+    },[]);
+
+    // useEffect(() => {
+    //   articleService(setArticles);
+    // }, [])
+
+
 
     return(<ComponentContainer>
         <HeaderContainer>View Articles</HeaderContainer>
@@ -50,6 +92,23 @@ const View = (props) => {
                         </ArticleDivider>
                     })
                 }
+
+                {/* {articles.map((article) => {
+            return (
+              <ArticleDivider key={article.id}>
+                <Article
+                  key={article.id}
+                  article={article}
+                  handleDelete={() => {
+                    handleDelete(article.id);
+                  }}
+                  handleEditSelect={() => {handleEditSelect(article.id)}}
+                />
+              </ArticleDivider>
+            );
+          })} */}
+
+          
             </ArticleContainer>
             
             {
@@ -66,6 +125,13 @@ export default View;
 //2. When the component mounts, make an http request that adds all articles to state.
 //3. Complete handleDelete method. It should make a request that delete the article with the included id.
 //4. Complete handleEdit method. It should make a request that updates the article that matches the included article param.
+// - [ ] In `View.js`, when the component mounts, use `articleService` to make an http request and add all articles to state.
+
+// - [ ] In `View.js`, complete `handleDelete` so that a http request is made that deletes the article with the included id. After successfully deleting the article on the api, update local state to reflect these changes.
+
+// - [ ] `editId` is passed into the `EditForm` component. In `EditForm.js`, make a http request on mount to get the article with the id `editId`. Save the result in state.
+
+// - [ ] In `View.js`, complete `handleEdit` so that a http request is made that updates the passed in article. Set the editing state to false when the request is complete. After successfully deleting the article on the api, update local state to reflect these changes.
 
 
 const Container = styled.div`
@@ -101,3 +167,5 @@ const ContentContainer = styled.div`
 const ArticleContainer = styled.div`
     background: grey;
 `;
+
+
