@@ -47,33 +47,36 @@ const Login = () => {
         .catch((err) => console.log(err.message));
     }
 
-    return (
-        <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username</label>
-        <input 
-            id="username" 
-            name="username"
-            value={formValues.username} 
-            onChange={handleChanges}
-            placeholder="Username"
+    return (<ComponentContainer>
+        <ModalContainer>
+            <h1>Welcome to Blogger Pro</h1>
+            <h2>Please enter your account information.</h2>
+        </ModalContainer>
+            <FormGroup onSubmit={handleSubmit}>
+                <label htmlFor="username">Username</label>
+                <Input 
+                    id="username" 
+                    name="username"
+                    value={formValues.username} 
+                    onChange={handleChanges}
+                    placeholder="Username"
 
-        />
-        <label htmlFor="password">Password</label>
-        <input 
-            id="password" 
-            name="password"
-            type="password"
-            placeholder="Password"
-            value={formValues.password}
-            onChange={handleChanges}
-        />
-
-        <button type="submit" id="submit">Submit</button>
-
-        <p id="error" className="error">{error}</p>
-        
-        </form>
-    );
+                />
+                <label htmlFor="password">Password</label>
+                <Input 
+                    id="password" 
+                    name="password"
+                    type="password"
+                    placeholder="Password"
+                    value={formValues.password}
+                    onChange={handleChanges}
+                />
+                <Button type="submit" id="submit">Submit</Button>
+                
+                <p id="error" className="error">{error}</p>
+            </FormGroup>
+         
+    </ComponentContainer>);
 };
 
 export default Login;
