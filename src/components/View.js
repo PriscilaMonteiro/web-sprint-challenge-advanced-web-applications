@@ -23,8 +23,6 @@ const View = (props) => {
         axiosWithAuth()
             .put(`http://localhost:5000/api/articles/${article.id}`, article)
             .then(res => {
-                console.log(res)
-               
                 setArticles(res.data)
                 setEditing(false)
             })
@@ -42,13 +40,10 @@ const View = (props) => {
     const handleEditCancel = ()=>{
         setEditing(false);
     }
-
     
     useEffect(() => {
       articleService(setArticles);
     }, [])
-
-
 
     return(<ComponentContainer>
         <HeaderContainer>View Articles</HeaderContainer>

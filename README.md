@@ -40,7 +40,16 @@ In this project, you will demonstrate your mastery of these skills by creating *
 > _Build a login form to authenticate your users along with all the components and utilities needed to support authentication._
 
 - [✅ ] In `Login.js`, build all UI and state functionality needed to capture a username and password. On a successful login, redirect user to the `View.js` component.
-  (got an undefined token because I did res.token.payload instead of res.token.data and unfortunately I figure it out at 6:40 pm and I fell like I ruined my project because that. At least I learned a lesson.)
+  **\_\_\_**Notes to myself********\_\_********
+  -(got an undefined token because I did res.token.payload instead of res.token.data and unfortunately I figure it out at 6:40 pm and I fell like I ruined my project because that. At least I learned a lesson.) Just pay more attention to details Priscila!
+  -be extra careful about baseURL, somehow it was getting 3000 instead of 5000. It took me a while to get that. Big mess. I need to understand this better.
+  -I need to dive in react hooks, study more and be more confident.
+
+  - I should practice other examples of CRUD to get at a point that I could do it without even thinking. Understand what back end wants!
+    I should spend more time at Postman to get more practice.
+
+  ***
+
 - [✅ ] **Make sure that the input for your username and password includes the id="username" and id="password" attributes. Codegrade autotests will fail without them.**
 - [✅ ] **Make sure that the submit button to your login form includes the id="submit" attribute. Codegrade autotests will fail without them.**
 - [✅ ] In `Login.js`, add a p tag that will display an error if one occurs. Add in all state functionality needed to support error display.
@@ -74,7 +83,7 @@ In this project, you will demonstrate your mastery of these skills by creating *
 
 > _Add in the http requests needed to logout of the application._
 
-- [ ] In `Logout.js`, execute a http request to logout on mount. When the request is complete, the user's security token should be removed and the browser should redirect to the login page.
+- [✅ ] In `Logout.js`, execute a http request to logout on mount. When the request is complete, the user's security token should be removed and the browser should redirect to the login page.
 
 ### Advanced Testing
 
