@@ -12,7 +12,7 @@ const View = (props) => {
 
     const handleDelete = (id) => {
         axiosWithAuth()
-            .delete(`/articles/${id}`)
+            .delete(`http://localhost:5000/api/articles/${id}`)
             .then((res) => {
                 setArticles(res.data);
             })
@@ -20,15 +20,15 @@ const View = (props) => {
     }
 
     const handleEdit = (article) => {
-        axiosWithAuth()
-            .put(`/articles/${article.id}`, article)
-            .then(res => {
-                setArticles(res.data)
-                setEditing(false)
-            })
-            .catch(err => {
-                console.log(err)
-        })
+        // const id = articleToEdit.id;
+        // axiosWithAuth()
+        //     .put(`/articles/${article.id}`, article)
+        //     .then(res => {
+        //         articleService(setArticles)
+        //     })
+        //     .catch(err => {
+        //         console.log(err)
+        // })
 
     }
 
@@ -41,40 +41,7 @@ const View = (props) => {
         setEditing(false);
     }
 
-    // useEffect(() => {
-    //     axiosWithAuth()
-    //     .get("/articles")
-    //     .then((res) => {
-    //         setArticles(res.data);
-    //     })
-    //     .catch((err) => console.log({ err }));
-    // })
-
-    // useEffect(async () => {
-    //     const articles = await articleService();
-        
-    //     setArticles(articles);
-    //     console.log("result------------",res.data);
-    // }, []);
-
-    // useEffect(async () => {
-    //     await articleService(setArticles);
-        
-    //     // console.log("result------------",res.data);
-    // }, []);
-
-    // useEffect(async () => {
-    //   articleService(setArticles);
-    // }, [])
-
-    // useEffect(() => {
-    //     const articles = async () => {
-    //        const res =  await articleService();
-    //         setArticles(res.data);
-    //     }; 
-    //     articles();
-    // },[]);
-
+    
     useEffect(() => {
       articleService(setArticles);
     }, [])
@@ -91,24 +58,7 @@ const View = (props) => {
                             <Article key={article.id} article={article} handleDelete={handleDelete} handleEditSelect={handleEditSelect}/>
                         </ArticleDivider>
                     })
-                }
-
-                {/* {articles.map((article) => {
-            return (
-              <ArticleDivider key={article.id}>
-                <Article
-                  key={article.id}
-                  article={article}
-                  handleDelete={() => {
-                    handleDelete(article.id);
-                  }}
-                  handleEditSelect={() => {handleEditSelect(article.id)}}
-                />
-              </ArticleDivider>
-            );
-          })} */}
-
-          
+                }          
             </ArticleContainer>
             
             {
