@@ -14,13 +14,13 @@ In this challenge you will create a login page and request a token from the serv
 
 ## Project Setup
 
-[ ] Run npm install to install your dependencies.
-[ ] Run npm start to run your frontend and backend code automatically.
-[ ] Note your backend code will run automatically when your run npm start. There is no need to seperately run a server.js file and no means to test the server through postman or the browser. Feel free to ignore any messages related to MSW or mock service workers.
+[✅ ] Run npm install to install your dependencies.
+[✅ ] Run npm start to run your frontend and backend code automatically.
+[✅ ] Note your backend code will run automatically when your run npm start. There is no need to separately run a server.js file and no means to test the server through postman or the browser. Feel free to ignore any messages related to MSW or mock service workers.
 
 ## Project Instructions
 
-In this project, you will demonstrate your mastery of these skills by creating **a login page** and **basic CRUD application.** You will implement basic security using **token authentication** and build private routes within the applcation.
+In this project, you will demonstrate your mastery of these skills by creating **a login page** and **basic CRUD application.** You will implement basic security using **token authentication** and build private routes within the application.
 
 ## Project Requirements
 
@@ -30,43 +30,45 @@ In this project, you will demonstrate your mastery of these skills by creating *
 
 > _Build the needed utilities to restrict access to private routes._
 
-- [ ] Build a `Route` component that renders rendering `Login.js` to the path `/`.
-- [ ] Build a `Route` component that renders rendering `Login.js` to the path `/login`.
-- [ ] Build a `Route` component that renders rendering `View.js` to the path `/view`.
-- [ ] Build a `Route` component that renders rendering `Logout.js` to the path `/logout`.
+- [✅ ] Build a `Route` component that renders rendering `Login.js` to the path `/`.
+- [✅ ] Build a `Route` component that renders rendering `Login.js` to the path `/login`.
+- [✅ ] Build a `Route` component that renders rendering `View.js` to the path `/view`.
+- [✅ ] Build a `Route` component that renders rendering `Logout.js` to the path `/logout`.
 
 ### Login Authentication
 
 > _Build a login form to authenticate your users along with all the components and utilities needed to support authentication._
 
-- [ ] In `Login.js`, build all UI and state functionality needed to capture a username and password. On a successful login, redirect user to the `View.js` component.
-- [ ] **Make sure that the input for your username and password includes the id="username" and id="password" attributes. Codegrade autotests will fail without them.**
-- [ ] **Make sure that the submit button to your login form includes the id="submit" attribute. Codegrade autotests will fail without them.**
-- [ ] In `Login.js`, add a p tag that will display an error if one occurs. Add in all state functionality needed to support error display.
-- [ ] **Make sure your error p tag has an id="error" attribute attached. Codegrade autotests will fail without them.**
-- [ ] Construct an http request that retrieves an auth token from the server when the username `Lambda` and the password `School` is passed into the request. Complete successful login auth flow and redirect to `View.js.`
-- [ ] Display an appropriate error message when login is not successful.
+- [✅ ] In `Login.js`, build all UI and state functionality needed to capture a username and password. On a successful login, redirect user to the `View.js` component.
+  (got an undefined token because I did res.token.payload instead of res.token.data and unfortunately I figure it out at 6:40 pm and I fell like I ruined my project because that. At least I learned a lesson.)
+- [✅ ] **Make sure that the input for your username and password includes the id="username" and id="password" attributes. Codegrade autotests will fail without them.**
+- [✅ ] **Make sure that the submit button to your login form includes the id="submit" attribute. Codegrade autotests will fail without them.**
+- [✅ ] In `Login.js`, add a p tag that will display an error if one occurs. Add in all state functionality needed to support error display.
+- [✅ ] **Make sure your error p tag has an id="error" attribute attached. Codegrade autotests will fail without them.**
+- [✅ ] Construct an http request that retrieves an auth token from the server when the username `Lambda` and the password `School` is passed into the request. Complete successful login auth flow and redirect to `View.js.`
+- [✅ ] Display an appropriate error message when login is not successful.
 
 ### Route Authentication
 
-- [ ] Build a `PrivateRoute` component within the components folder.
-- [ ] Use the `PrivateRoute` component to build a route rendering `View.js` to the path `/view`.
-- [ ] Use the `PrivateRoute` component to build a route rendering `Logout.js` to the path `/logout`.
+- [✅ ] Build a `PrivateRoute` component within the components folder.
+- [✅ ] Use the `PrivateRoute` component to build a route rendering `View.js` to the path `/view`.
+- [✅ ] Use the `PrivateRoute` component to build a route rendering `Logout.js` to the path `/logout`.
 
 ### Request Authentication
 
 > _Complete the requests needed to execute all CRUD functions._
 
-- [ ] Build a `axiosWithAuth` module within the utils folder to create an instance of axios with the authentication header.
-- [ ] Complete the `services/articleService.js` module. It should use make an authenticated call to retrieve and return all articles from the server.
+- [✅ ] Build a `axiosWithAuth` module within the utils folder to create an instance of axios with the authentication header.
+- [✅ ] Complete the `services/articleService.js` module. It should use make an authenticated call to retrieve and return all articles from the server.
 
-- [ ] In `View.js`, when the component mounts, use `articleService` to make an http request and add all articles to state.
+- [✅ ] In `View.js`, when the component mounts, use `articleService` to make an http request and add all articles to state.
+  _Something is wrong and I can't figure it out. And for the others I need that to be working, I will try on Dark but..._
 
-- [ ] In `View.js`, complete `handleDelete` so that a http request is made that deletes the article with the included id. After successfully deleting the article on the api, update local state to reflect these changes.
+- [✅ ] In `View.js`, complete `handleDelete` so that a http request is made that deletes the article with the included id. After successfully deleting the article on the api, update local state to reflect these changes.
 
-- [ ] `editId` is passed into the `EditForm` component. In `EditForm.js`, make a http request on mount to get the article with the id `editId`. Save the result in state.
+- [✅ ] `editId` is passed into the `EditForm` component. In `EditForm.js`, make a http request on mount to get the article with the id `editId`. Save the result in state.
 
-- [ ] In `View.js`, complete `handleEdit` so that a http request is made that updates the passed in article. Set the editing state to false when the request is complete. After successfully deleting the article on the api, update local state to reflect these changes.
+- [✅ ] In `View.js`, complete `handleEdit` so that a http request is made that updates the passed in article. Set the editing state to false when the request is complete. After successfully deleting the article on the api, update local state to reflect these changes.
 
 ### Logout Authentication
 
@@ -78,10 +80,10 @@ In this project, you will demonstrate your mastery of these skills by creating *
 
 > _Add the following tests within Article.test.js._
 
-- [ ] Build a test that shows the `Article` component, given the correct props, can render without errors.
-- [ ] Build a test that shows that when a correctly formatted article is passed into the `Article` component, the correct headline, author, summary and body are displayed.
-- [ ] The `Article` component should display "Associated Press" when an author attribute is not avalible. Build a test that verifies that that is true.
-- [ ] Build a test that show that when the deleteButton is pressed on an Article, the handleDelete functional property is executed.
+- [✅ ] Build a test that shows the `Article` component, given the correct props, can render without errors.
+- [✅ ] Build a test that shows that when a correctly formatted article is passed into the `Article` component, the correct headline, author, summary and body are displayed.
+- [✅ ] The `Article` component should display "Associated Press" when an author attribute is not avalible. Build a test that verifies that that is true.
+- [ ✅] Build a test that show that when the deleteButton is pressed on an Article, the handleDelete functional property is executed.
 
 > _Add the following tests within View.test.js._
 

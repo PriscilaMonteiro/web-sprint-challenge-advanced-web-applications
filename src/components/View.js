@@ -19,12 +19,14 @@ const View = (props) => {
             .catch((err) => console.log({ err }));
     }
 
-    const handleEdit = (id) => {
+    const handleEdit = (article) => {
         axiosWithAuth()
-            .put(`http://localhost:5000/api/articles/${id}`, id)
+            .put(`http://localhost:5000/api/articles/${article.id}`, article)
             .then(res => {
                 console.log(res)
-                // setArticles(res.data)
+               
+                setArticles(res.data)
+                setEditing(false)
             })
             .catch(err => {
                 console.log(err)

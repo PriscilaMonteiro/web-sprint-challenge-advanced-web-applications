@@ -37,7 +37,7 @@ const EditForm = (props)=> {
         .then(res => {
             setArticle(res.data)
         })
-    }, [editId])
+    }, [])
 
     return(<FormContainer onSubmit={handleSubmit}>
         <h3>Edit Article</h3>
