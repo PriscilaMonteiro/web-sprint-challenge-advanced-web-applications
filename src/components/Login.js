@@ -38,10 +38,9 @@ const Login = () => {
     axios
         .post("http://localhost:5000/api/login", formValues)
         .then((res) => {
-          window.localStorage.setItem("token", res.data.payload);
-          push("/view");
-
-
+            window.localStorage.setItem
+            ("token", res.data.token);
+            push("/view");
         })
         
         .catch((err) => console.log(err.message));

@@ -4,7 +4,6 @@ const articleService = (setArticles)=> {
   axiosWithAuth()
     .get("http://localhost:5000/api/articles")
     .then((res) => {
-      // console.log("res********", res.data);
       setArticles(res.data);
       
     })

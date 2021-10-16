@@ -67,17 +67,17 @@ const View = (props) => {
     //   articleService(setArticles);
     // }, [])
 
-    useEffect(() => {
-        const articles = async () => {
-           const res =  await articleService();
-            setArticles(res.data);
-        }; 
-        articles();
-    },[]);
-
     // useEffect(() => {
-    //   articleService(setArticles);
-    // }, [])
+    //     const articles = async () => {
+    //        const res =  await articleService();
+    //         setArticles(res.data);
+    //     }; 
+    //     articles();
+    // },[]);
+
+    useEffect(() => {
+      articleService(setArticles);
+    }, [])
 
 
 
